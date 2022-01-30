@@ -54,3 +54,12 @@ shellcheck:
 
 eclint:
 	@ ./test/linting/lint.sh eclint
+
+start:
+	docker-compose up -d mailserver
+
+stop:
+	docker-compose down
+
+logs:
+	docker-compose logs -f mailserver

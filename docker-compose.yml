@@ -1,11 +1,12 @@
+version: "3"
 services:
   mailserver:
     image: docker.io/mailserver/docker-mailserver:latest
     container_name: mailserver
     # If the FQDN for your mail-server is only two labels (eg: example.com),
     # you can assign this entirely to `hostname` and remove `domainname`.
-    hostname: mail
-    domainname: example.com
+    hostname: aeonus
+    domainname: dobnow.pl
     env_file: mailserver.env
     # More information about the mail-server ports:
     # https://docker-mailserver.github.io/docker-mailserver/edge/config/security/understanding-the-ports/
@@ -17,14 +18,23 @@ services:
       - "587:587"  # ESMTP (explicit TLS => STARTTLS)
       - "993:993"  # IMAP4 (implicit TLS)
     volumes:
-      - ./docker-data/dms/mail-data/:/var/mail/
-      - ./docker-data/dms/mail-state/:/var/mail-state/
-      - ./docker-data/dms/mail-logs/:/var/log/mail/
-      - ./docker-data/dms/config/:/tmp/docker-mailserver/
+      - /mnt/MargokPool/archive/Documents/Mail/docker-mailserver-data/dms/mail-data/:/var/mail/
+      - /mnt/MargokPool/archive/Documents/Mail/docker-mailserver-data/dms/mail-state/:/var/mail-state/
+      - /mnt/MargokPool/archive/Documents/Mail/docker-mailserver-data/dms/mail-logs/:/var/log/mail/
+      - /mnt/MargokPool/archive/Documents/Mail/docker-mailserver-data/dms/config/:/tmp/docker-mailserver/
       - /etc/localtime:/etc/localtime:ro
     restart: always
     stop_grace_period: 1m
     cap_add:
       - NET_ADMIN
       - SYS_PTRACE
-
+    environment:
+      - ENABLE_SPAMASSASSIN=0
+      - SPAMASSASSIN_SPAM_TO_INBOX=0
+      - ENABLE_CLAMAV=0
+      - ENABLE_FAIL2BAN=1
+      - ENABLE_POSTGREY=1
+      - ENABLE_SASLAUTHD=0
+      - ONE_DIR=1
+      - DMS_DEBUG=0
+      - POSTFIX_MESSAGE_SIZE_LIMIT=0
