@@ -27,7 +27,6 @@ services:
     stop_grace_period: 1m
     cap_add:
       - NET_ADMIN
-      - SYS_PTRACE
     environment:
       - ENABLE_SPAMASSASSIN=0
       - SPAMASSASSIN_SPAM_TO_INBOX=0
@@ -38,3 +37,7 @@ services:
       - ONE_DIR=1
       - DMS_DEBUG=0
       - POSTFIX_MESSAGE_SIZE_LIMIT=0
+    healthcheck:
+      test: "ss --listening --tcp | grep -P 'LISTEN.+:smtp' || exit 1"
+      timeout: 3s
+      retries: 0
