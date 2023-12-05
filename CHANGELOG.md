@@ -6,6 +6,18 @@ All notable changes to this project will be documented in this file. The format 
 
 > **Note**: Changes and additions listed here are contained in the `:edge` image tag. These changes may not be as stable as released changes.
 
+### Added
+
+- **Tests:**
+  - You can now use `make run-local-instance` to run a DMS image that was built locally to test changes ([#3663](https://github.com/docker-mailserver/docker-mailserver/pull/3663))
+
+### Updates
+
+- **Documentation:**
+  - Raise awareness in the troubleshooting page for a common misconfiguration when deviating from our advice by using a bare domain ([#3680](https://github.com/docker-mailserver/docker-mailserver/pull/3680))
+- **Internal:**
+  - Postfix configures `virtual_mailbox_maps` and `virtual_transport` during startup instead of using defaults (configured for Dovecot) via our `main.cf` ([#3681](https://github.com/docker-mailserver/docker-mailserver/pull/3681))
+
 ### Fixed
 
 - **Internal**:
