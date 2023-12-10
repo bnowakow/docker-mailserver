@@ -1473,7 +1473,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>remoe</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/romansey">
             <img src="https://avatars.githubusercontent.com/u/1835713?v=4" width="100;" alt="romansey"/>
@@ -1516,7 +1517,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>3ap</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/shyim">
             <img src="https://avatars.githubusercontent.com/u/6224096?v=4" width="100;" alt="shyim"/>
@@ -1559,7 +1561,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>5ven</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/syl20bnr">
             <img src="https://avatars.githubusercontent.com/u/1243537?v=4" width="100;" alt="syl20bnr"/>
@@ -1602,7 +1605,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>tweibert</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/torus">
             <img src="https://avatars.githubusercontent.com/u/65044?v=4" width="100;" alt="torus"/>
@@ -1645,7 +1649,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>vilisas</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/42wim">
             <img src="https://avatars.githubusercontent.com/u/1810977?v=4" width="100;" alt="42wim"/>
@@ -1688,7 +1693,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>awb99</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/brainkiller">
             <img src="https://avatars.githubusercontent.com/u/1619562?v=4" width="100;" alt="brainkiller"/>
@@ -1731,7 +1737,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>ghnp5</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/helmutundarnold">
             <img src="https://avatars.githubusercontent.com/u/12536684?v=4" width="100;" alt="helmutundarnold"/>
@@ -1774,7 +1781,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>jjtt</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/paralax">
             <img src="https://avatars.githubusercontent.com/u/5619153?v=4" width="100;" alt="paralax"/>
@@ -1817,7 +1825,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>matrixes</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/mchamplain">
             <img src="https://avatars.githubusercontent.com/u/759989?v=4" width="100;" alt="mchamplain"/>
@@ -1860,7 +1869,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>olaf-mandel</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/ontheair81">
             <img src="https://avatars.githubusercontent.com/u/6220584?v=4" width="100;" alt="ontheair81"/>
@@ -1903,7 +1913,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>rriski</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/schnippl0r">
             <img src="https://avatars.githubusercontent.com/u/58435847?v=4" width="100;" alt="schnippl0r"/>
@@ -1946,7 +1957,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>tamueller</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/vivacarvajalito">
             <img src="https://avatars.githubusercontent.com/u/1446654?v=4" width="100;" alt="vivacarvajalito"/>
