@@ -484,7 +484,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>Zehir</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/guardiande">
             <img src="https://avatars.githubusercontent.com/u/4947715?v=4" width="100;" alt="guardiande"/>
@@ -527,7 +528,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>m-schmoock</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/VanVan">
             <img src="https://avatars.githubusercontent.com/u/388581?v=4" width="100;" alt="VanVan"/>
@@ -570,7 +572,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>ubenmackin</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/craue">
             <img src="https://avatars.githubusercontent.com/u/800119?v=4" width="100;" alt="craue"/>
@@ -613,7 +616,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>emazzotta</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/fl42">
             <img src="https://avatars.githubusercontent.com/u/46161216?v=4" width="100;" alt="fl42"/>
@@ -656,7 +660,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>millaguie</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/jedateach">
             <img src="https://avatars.githubusercontent.com/u/1356335?v=4" width="100;" alt="jedateach"/>
@@ -699,7 +704,8 @@ Thanks goes to these wonderful people ✨
             <br />
             <sub><b>keslerm</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/castorinop">
             <img src="https://avatars.githubusercontent.com/u/370992?v=4" width="100;" alt="castorinop"/>
