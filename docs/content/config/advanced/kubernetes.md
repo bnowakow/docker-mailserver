@@ -140,6 +140,9 @@ If using our Helm chart is not viable for you, here is some guidance to start wi
                 app: mailserver
 
             spec:
+              # `Local` is most likely required, otherwise every incoming request would be identified by the external IP,
+              # which will get banned by Fail2Ban when monitored services are not configured for PROXY protocol
+              externalTrafficPolicy: Local
               type: LoadBalancer
 
               selector:
@@ -152,7 +155,7 @@ If using our Helm chart is not viable for you, here is some guidance to start wi
                   targetPort: smtp
                   protocol: TCP
                 # submissions (ESMTP with implicit TLS)
-                - name: submission
+                - name: submissions
                   port: 465
                   targetPort: submissions
                   protocol: TCP
