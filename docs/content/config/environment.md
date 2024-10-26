@@ -39,6 +39,12 @@ Default: 5000
 
 The User ID assigned to the static vmail user for `/var/mail` (_Mail storage managed by Dovecot_).
 
+!!! warning "Incompatible UID values"
+
+    - A value of [`0` (root) is not compatible][gh-issue::vmail-uid-cannot-be-root].
+    - This feature will attempt to adjust the `uid` for the `docker` user (`/etc/passwd`), hence the error emitted to logs if the UID is already assigned to another user.
+    - The feature appears to work with other UID values that are already assigned in `/etc/passwd`, even though Dovecot by default has a setting for the minimum UID as `500`.
+
 ##### DMS_VMAIL_GID
 
 Default: 5000
@@ -47,24 +53,12 @@ The Group ID assigned to the static vmail group for `/var/mail` (_Mail storage m
 
 ##### ACCOUNT_PROVISIONER
 
-Configures the provisioning source of user accounts (including aliases) for user queries and authentication by services managed by DMS (_Postfix and Dovecot_).
+Configures the [provisioning source of user accounts][docs::account-management::overview] (including aliases) for user queries and authentication by services managed by DMS (_Postfix and Dovecot_).
 
-!!! tip "OAuth2 Support"
-
-    Presently DMS supports OAuth2 only as an supplementary authentication method.
-
-    - A third-party service must provide a valid token for the user which Dovecot validates with the authentication service provider. To enable this feature reference the [OAuth2 configuration example guide][docs::auth::oauth2-config-guide].
-    - User accounts must be provisioned to receive mail via one of the supported `ACCOUNT_PROVISIONER` providers.
-    - User provisioning via OIDC is planned for the future, see [this tracking issue](https://github.com/docker-mailserver/docker-mailserver/issues/2713).
-
-[docs::auth::oauth2-config-guide]: ./advanced/auth-oauth2.md
-
-- **empty** => use FILE
+- **FILE** => use local files
 - LDAP => use LDAP authentication
-- OIDC => use OIDC authentication (**not yet implemented**)
-- FILE => use local files (this is used as the default)
 
-A second container for the ldap service is necessary (e.g. [`bitnami/openldap`](https://hub.docker.com/r/bitnami/openldap/)).
+LDAP requires an external service (e.g. [`bitnami/openldap`](https://hub.docker.com/r/bitnami/openldap/)).
 
 ##### PERMIT_DOCKER
 
@@ -456,7 +450,7 @@ Default: 6 (which corresponds to the `add_header` action)
 
 ##### RSPAMD_NEURAL
 
-Can be used to enable or disable the [Neural network module][rspamd-docs-neural-network]. This is an experimental anti-spam weigh method using three neural networks in the configuration added here. As far as we can tell it trains itself by using other modules to find out what spam is. It will take a while (a week or more) to train its first neural network. The config trains new networks all the time and discards old networks. 
+Can be used to enable or disable the [Neural network module][rspamd-docs-neural-network]. This is an experimental anti-spam weigh method using three neural networks in the configuration added here. As far as we can tell it trains itself by using other modules to find out what spam is. It will take a while (a week or more) to train its first neural network. The config trains new networks all the time and discards old networks.
 Since it is experimental, it is switched off by default.
 
 - **0** => Disabled
@@ -738,7 +732,7 @@ Enable or disable `getmail`.
 
 ##### GETMAIL_POLL
 
-- **5** => `getmail` The number of minutes for the interval. Min: 1; Max: 30; Default: 5.
+- **5** => `getmail` The number of minutes for the interval. Min: 1; Default: 5.
 
 
 #### OAUTH2
@@ -1135,12 +1129,15 @@ Provide the credentials to use with `RELAY_HOST` or `DEFAULT_RELAY_HOST`.
         - Add the exact relayhost value (`host:port` / `[host]:port`) from the generated `/etc/postfix/relayhost_map`, or `main.cf:relayhost` (`DEFAULT_RELAY_HOST`).
         - `setup relay ...` is missing support, you must instead add these manually to `postfix-sasl-password.cf`.
 
+[gh-issue::vmail-uid-cannot-be-root]: https://github.com/docker-mailserver/docker-mailserver/issues/4098#issuecomment-2257201025
+
 [docs-rspamd]: ./security/rspamd.md
 [docs-tls]: ./security/ssl.md
 [docs-tls-letsencrypt]: ./security/ssl.md#lets-encrypt-recommended
 [docs-tls-manual]: ./security/ssl.md#bring-your-own-certificates
 [docs-tls-selfsigned]: ./security/ssl.md#self-signed-certificates
-[docs-accounts-quota]: ./user-management.md#quotas
+[docs-accounts-quota]: ./account-management/overview.md#quotas
+[docs::account-management::overview]: ./account-management/overview.md
 [docs::relay-host]: ./advanced/mail-forwarding/relay-hosts.md
 [docs::dms-volumes-state]: ./advanced/optional-config.md#volumes-state
 [postfix-config::relayhost]: https://www.postfix.org/postconf.5.html#relayhost

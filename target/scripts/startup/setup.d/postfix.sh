@@ -79,6 +79,8 @@ EOF
     if [[ ${ACCOUNT_PROVISIONER} == 'FILE' ]]; then
       postconf 'virtual_mailbox_maps = texthash:/etc/postfix/vmailbox'
     fi
+    # Historical context regarding decision to use LMTP instead of LDA (do not change this):
+    # https://github.com/docker-mailserver/docker-mailserver/issues/4178#issuecomment-2375489302
     postconf 'virtual_transport = lmtp:unix:/var/run/dovecot/lmtp'
   fi
 
@@ -129,7 +131,7 @@ function __postfix__setup_override_configuration() {
     # Do not directly output to 'main.cf' as this causes a read-write-conflict.
     # `postconf` output is filtered to skip expected warnings regarding overrides:
     # https://github.com/docker-mailserver/docker-mailserver/pull/3880#discussion_r1510414576
-    postconf -n >/tmp/postfix-main-new.cf 2> >(grep -v 'overriding earlier entry')
+    postconf -n >/tmp/postfix-main-new.cf 2> >(grep -v 'overriding earlier entry' >&2)
 
     mv /tmp/postfix-main-new.cf /etc/postfix/main.cf
     _adjust_mtime_for_postfix_maincf

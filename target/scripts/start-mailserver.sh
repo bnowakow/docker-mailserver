@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# When 'pipefail' is enabled, the exit status of the pipeline reflects the exit status of the last command that fails.
+# Without 'pipefail', the exit status of a pipeline is determined by the exit status of the last command in the pipeline.
 set -o pipefail
-shopt -s globstar inherit_errexit
+
+# Allows the usage of '**' in patterns, e.g. ls **/*
+shopt -s globstar
 
 # ------------------------------------------------------------
 # ? >> Sourcing helpers & stacks
@@ -161,6 +165,7 @@ function _register_functions() {
   [[ ${ENABLE_CLAMAV}           -eq 1 ]] &&	_register_start_daemon '_start_daemon_clamav'
   [[ ${ENABLE_AMAVIS}           -eq 1 ]] && _register_start_daemon '_start_daemon_amavis'
   [[ ${ACCOUNT_PROVISIONER} == 'FILE' ]] && _register_start_daemon '_start_daemon_changedetector'
+  [[ ${ENABLE_GETMAIL}          -eq 1 ]] && _register_start_daemon '_start_daemon_getmail'
 }
 
 # ------------------------------------------------------------
@@ -194,10 +199,16 @@ fi
 # marker to check if container was restarted
 date >/CONTAINER_START
 
+# Container logs will receive updates from this log file:
+MAIN_LOGFILE=/var/log/mail/mail.log
+# NOTE: rsyslogd would usually create this later during `_start_daemons`, however it would already exist if the container was restarted.
+touch "${MAIN_LOGFILE}"
+# Ensure `tail` follows the correct position of the log file for this container start (new logs begin once `_start_daemons` is called)
+TAIL_START=$(( $(wc -l < "${MAIN_LOGFILE}") + 1 ))
+
 [[ ${LOG_LEVEL} =~ (debug|trace) ]] && print-environment
 _start_daemons
 
+# Container start-up scripts completed. `tail` will now pipe the log updates to stdout:
 _log 'info' "${HOSTNAME} is up and running"
-
-touch /var/log/mail/mail.log
-exec tail -Fn 0 /var/log/mail/mail.log
+exec tail -Fn "+${TAIL_START}" "${MAIN_LOGFILE}"

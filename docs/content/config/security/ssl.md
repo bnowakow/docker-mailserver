@@ -6,7 +6,7 @@ There are multiple options to enable SSL (via [`SSL_TYPE`][docs-env::ssl-type]):
 
 - Using [letsencrypt](#lets-encrypt-recommended) (recommended)
 - Using [Caddy](#caddy)
-- Using [Traefik](#traefik-v2)
+- Using [Traefik](#traefik)
 - Using [self-signed certificates](#self-signed-certificates)
 - Using [your own certificates](#bring-your-own-certificates)
 
@@ -240,7 +240,7 @@ After completing the steps above, your certificate should be ready to use.
         image: certbot/dns-cloudflare:latest
         command: renew --dns-cloudflare --dns-cloudflare-credentials /run/secrets/cloudflare-api-token
         volumes:
-          - ./docker-data/certbot/certs/:/etc/letsencrtypt/
+          - ./docker-data/certbot/certs/:/etc/letsencrypt/
           - ./docker-data/certbot/logs/:/var/log/letsencrypt/
         secrets:
           - cloudflare-api-token
